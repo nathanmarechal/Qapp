@@ -1,5 +1,5 @@
 TEMPLATE=app
-TARGET=mini
+TARGET=application
 QT=core gui widgets
-SOURCES += mini.cpp
+SOURCES += main.cpp
 #HEADERS += blabla.h
