@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MenuWindow</class>
+ <widget class="QMainWindow" name="MenuWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Menu des Jeux</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayoutCentral">
+    <item>
+     <widget class="QLabel" name="menuTitle">
+      <property name="styleSheet">
+       <string notr="true">font-size: 20px; font-weight: bold; margin-top: 20px; margin-bottom: 20px;</string>
+      </property>
+      <property name="text">
+       <string>Bienvenue au Centre de Jeux</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="unscrambleGameButton">
+      <property name="styleSheet">
+       <string notr="true">
+        QPushButton { background-color: #4CAF50; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+        QPushButton:hover { background-color: #45a049; }
+       </string>
+      </property>
+      <property name="text">
+       <string>Jeu de Mots Mêlés</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="newGameButton">
+      <property name="styleSheet">
+       <string notr="true">
+        QPushButton { background-color: #2196F3; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+        QPushButton:hover { background-color: #0b7dda; }
+       </string>
+      </property>
+      <property name="text">
+       <string>Nouveau Jeu</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="flappyGameButton">
+      <property name="styleSheet">
+       <string notr="true">
+        QPushButton { background-color: #ff5722; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+        QPushButton:hover { background-color: #e64a19; }
+       </string>
+      </property>
+      <property name="text">
+       <string>Flappy Bird</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+   <connection>
+    <sender>unscrambleGameButton</sender>
+    <signal>clicked()</signal>
+    <receiver>MenuWindow</receiver>
+    <slot>on_unscrambleGameButton_clicked()</slot>
+   </connection>
+   <connection>
+    <sender>flappyGameButton</sender>
+    <signal>clicked()</signal>
+    <receiver>MenuWindow</receiver>
+    <slot>on_flappyGameButton_clicked()</slot>
+   </connection>
+ </connections>
+</ui>
+
