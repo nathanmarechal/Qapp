@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <QRandomGenerator>
 #include <QTimerEvent>
+#include <QPixmap>
 
 
 class Flappy : public QWidget
@@ -33,6 +34,9 @@ private:
     int obstacleGap;
     int obstacleWidth;
     int score;
+    QPixmap backgroundPixmap;
+    QPixmap birdPixmap;
+
 
     void flap();
     void updateGame();

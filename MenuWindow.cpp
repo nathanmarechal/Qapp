@@ -23,6 +23,10 @@ void MenuWindow::on_unscrambleGameButton_clicked()
 
 void MenuWindow::on_flappyGameButton_clicked()
 {
-    Flappy *flappyGame = new Flappy();
+    static Flappy *flappyGame = nullptr;
+    if (flappyGame == nullptr) {
+        flappyGame = new Flappy();
+        flappyGame->setAttribute(Qt::WA_DeleteOnClose);
+    }
     flappyGame->show();
 }

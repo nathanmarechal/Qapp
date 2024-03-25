@@ -8,12 +8,20 @@ Flappy::Flappy(QWidget *parent) : QWidget(parent), birdY(200), gravity(0.25), li
     connect(timer, &QTimer::timeout, this, QOverload<>::of(&Flappy::updateGame));
     timer->start(30);
     createObstacle();
+    backgroundPixmap.load("./tortue_complot2.jpeg");
+    birdPixmap.load("./flap.png");
+    birdPixmap = birdPixmap.scaled(30, 30, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
 void Flappy::paintEvent(QPaintEvent *) {
     QPainter painter(this);
-    painter.setBrush(Qt::yellow);
-    painter.drawRect(100, birdY, 30, 30);
+    painter.drawPixmap(rect(), backgroundPixmap);
+    if (!birdPixmap.isNull()) {
+        painter.drawPixmap(100, birdY, birdPixmap);
+    }
+    //painter.setBrush(Qt::yellow);
+    //painter.drawRect(100, birdY, 30, 30);
+
 
     painter.setBrush(Qt::green);
     for (const QRect &obstacle : qAsConst(obstacles)) {
@@ -24,25 +32,25 @@ void Flappy::paintEvent(QPaintEvent *) {
 void Flappy::updateGame() {
     birdY += gravity;
     gravity += 0.5;
-    if (birdY > height()) {
-        birdY = 200;
-        gravity = 0.25;
-    }
 
-    QList<QRect> newObstacles;
-    for (QRect &obstacle : obstacles) {
-        obstacle.translate(-5, 0);
-        if (obstacle.right() > 0) {
-            newObstacles.append(obstacle);
+    if (birdY > height() - 30  || birdY < 0) {
+        resetGame();
+    } else {
+        QList<QRect> newObstacles;
+        for (QRect &obstacle : obstacles) {
+            obstacle.translate(-5, 0);
+            if (obstacle.right() > 0) {
+                newObstacles.append(obstacle);
+            }
         }
-    }
-    obstacles = newObstacles;
+        obstacles = newObstacles;
 
-    if (obstacles.isEmpty() || obstacles.last().right() < width() - 300) {
-        createObstacle();
-    }
+        if (obstacles.isEmpty() || obstacles.last().right() < width() - 300) {
+            createObstacle();
+        }
 
-    checkCollision();
+        checkCollision();
+    }
     update();
 }
 
@@ -68,6 +76,7 @@ void Flappy::resetGame() {
     obstacles.clear();
     score = 0;
     createObstacle();
+    update();
 }
 
 void Flappy::flap() {
