@@ -55,6 +55,19 @@
      </widget>
     </item>
     <item>
+ <widget class="QPushButton" name="tictactoeGameButton">
+  <property name="styleSheet">
+   <string notr="true">
+    QPushButton { background-color: #9C27B0; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+    QPushButton:hover { background-color: #8E24AA; }
+   </string>
+  </property>
+  <property name="text">
+   <string>Morpion</string>
+  </property>
+ </widget>
+</item>
+    <item>
      <widget class="QPushButton" name="flappyGameButton">
       <property name="styleSheet">
        <string notr="true">

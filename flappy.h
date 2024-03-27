@@ -37,7 +37,6 @@ private:
     QPixmap backgroundPixmap;
     QPixmap birdPixmap;
 
-
     void flap();
     void updateGame();
     void createObstacle();

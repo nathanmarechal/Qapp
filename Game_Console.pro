@@ -12,12 +12,14 @@ SOURCES += \
     MenuWindow.cpp \
     flappy.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tictactoe.cpp
 
 HEADERS += \
     MenuWindow.h \
     flappy.h \
-    mainwindow.h
+    mainwindow.h \
+    tictactoe.h
 
 FORMS += \
     mainwindow.ui \

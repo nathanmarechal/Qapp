@@ -18,6 +18,7 @@ public:
 private slots:
     void on_unscrambleGameButton_clicked();
     void on_flappyGameButton_clicked();
+    void on_tictactoeGameButton_clicked();
 
 private:
     Ui::MenuWindow *ui;
