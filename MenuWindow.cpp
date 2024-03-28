@@ -4,13 +4,12 @@
 #include "flappy.h"
 #include "tictactoe.h"
 #include "memorygame.h"
+#include "minesweeperstart.h"
 #include <QDebug>
 
 MenuWindow::MenuWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MenuWindow)
-
-
 {
     ui->setupUi(this);
 }
@@ -32,6 +31,7 @@ void MenuWindow::on_unscrambleGameButton_clicked() {
     gameWindow->activateWindow();
 }
 
+
 void MenuWindow::on_flappyGameButton_clicked() {
     static Flappy *flappyGame = nullptr;
     if (!flappyGame) {
@@ -48,19 +48,34 @@ void MenuWindow::on_flappyGameButton_clicked() {
     flappyGame->activateWindow();
 }
 
+
 void MenuWindow::on_tictactoeGameButton_clicked()
 {
     TicTacToe *tictactoeGame = new TicTacToe(nullptr);
     tictactoeGame->show();
 }
 
+void MenuWindow::on_minesweeperGameButton_clicked()
+{
+    qDebug() << "in minesweeper button clicked";
+    MinesweeperStart *minesweeper = new MinesweeperStart(this);
+    this->hide();
+    minesweeper->show();
+}
+
+
+void MenuWindow::on_pushButton_clicked()
+{
+    qDebug() << "in random ass button clicked";
+}
+
 void MenuWindow::on_memoryGameButton_clicked() {
     qDebug() << "Jeu de mémoire cliqué";
     static MemoryGame* memoryGame = nullptr;
     if (!memoryGame) {
-        memoryGame = new MemoryGame(); // Suppression de 'this' pour éviter une éventuelle intégration incorrecte comme widget enfant.
+        memoryGame = new MemoryGame();
         memoryGame->setAttribute(Qt::WA_DeleteOnClose);
-        memoryGame->setWindowFlag(Qt::Window); // Assure que memoryGame est traité comme une fenêtre indépendante.
+        memoryGame->setWindowFlag(Qt::Window);
         connect(memoryGame, &QWidget::destroyed, [=]() {
             memoryGame = nullptr;
         });
@@ -69,3 +84,4 @@ void MenuWindow::on_memoryGameButton_clicked() {
     memoryGame->raise();
     memoryGame->activateWindow();
 }
+

@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::checkAnswer);
     connect(ui->nextButton, &QPushButton::clicked, this, &MainWindow::nextWord);
-    connect(ui->menuButton, &QPushButton::clicked, this, &MainWindow::on_menuButton_clicked);
 }
 
 MainWindow::~MainWindow() {
@@ -68,8 +67,4 @@ void MainWindow::nextWord() {
 void MainWindow::updateScore(int points) {
     score += points;
     ui->scoreLabel->setText(QString("Score : %1").arg(score));
-}
-
-void MainWindow::on_menuButton_clicked() {
-    QMessageBox::information(this, "Menu", "Retour au menu principal...");
 }

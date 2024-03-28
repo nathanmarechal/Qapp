@@ -14,18 +14,26 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     memorygame.cpp \
-    tictactoe.cpp
+    tictactoe.cpp \
+    minesweepergame.cpp \
+    minesweepergameoverdialog.cpp \
+    minesweeperstart.cpp
 
 HEADERS += \
     MenuWindow.h \
     flappy.h \
     mainwindow.h \
     memorygame.h \
-    tictactoe.h
+    tictactoe.h \
+    minesweepergame.h \
+    minesweepergameoverdialog.h \
+    minesweeperstart.h
 
 FORMS += \
     mainwindow.ui \
-    menuwindow.ui
+    menuwindow.ui \
+    minesweeperstart.ui \
+    minesweepergameoverdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -27,18 +27,22 @@ protected:
 
 private:
     QTimer *timer;
-    int birdY;
-    qreal gravity;
-    qreal lift;
-    QList<QRect> obstacles;
+    QTimer *messageTimer;
+    bool showMessage;
+    QPixmap backgroundPixmap;
+    QPixmap birdPixmap;
+    double birdY;
+    double gravity;
+    double lift;
     int obstacleGap;
     int obstacleWidth;
     int score;
-    QPixmap backgroundPixmap;
-    QPixmap birdPixmap;
+    QList<QRect> obstacles;
 
     void flap();
     void updateGame();
     void createObstacle();
     void checkCollision();
+    void hideMessage();
+    int birdX() const;
 };

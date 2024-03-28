@@ -7,7 +7,6 @@
 #include <QGridLayout>
 #include <QTimer>
 #include <QVector>
-// Inclusion des headers nécessaires pour l'animation
 #include <QPropertyAnimation>
 #include <QSequentialAnimationGroup>
 

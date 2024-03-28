@@ -20,7 +20,6 @@ public:
 private slots:
     void checkAnswer();
     void nextWord();
-    void on_menuButton_clicked();
 
 private:
     Ui::MainWindow *ui;

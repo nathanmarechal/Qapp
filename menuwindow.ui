@@ -29,6 +29,19 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="flappyGameButton">
+      <property name="styleSheet">
+       <string notr="true">
+        QPushButton { background-color: #ff5722; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+        QPushButton:hover { background-color: #e64a19; }
+       </string>
+      </property>
+      <property name="text">
+       <string>Flappy Bird</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="unscrambleGameButton">
       <property name="styleSheet">
        <string notr="true">
@@ -41,32 +54,6 @@
       </property>
      </widget>
     </item>
-    <item>
-     <widget class="QPushButton" name="newGameButton">
-      <property name="styleSheet">
-       <string notr="true">
-        QPushButton { background-color: #2196F3; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
-        QPushButton:hover { background-color: #0b7dda; }
-       </string>
-      </property>
-      <property name="text">
-       <string>Nouveau Jeu</string>
-      </property>
-     </widget>
-    </item>
-    <item>
- <widget class="QPushButton" name="tictactoeGameButton">
-  <property name="styleSheet">
-   <string notr="true">
-    QPushButton { background-color: #9C27B0; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
-    QPushButton:hover { background-color: #8E24AA; }
-   </string>
-  </property>
-  <property name="text">
-   <string>Morpion</string>
-  </property>
- </widget>
-</item>
 <item>
  <widget class="QPushButton" name="memoryGameButton">
   <property name="styleSheet">
@@ -81,37 +68,78 @@
  </widget>
 </item>
     <item>
-     <widget class="QPushButton" name="flappyGameButton">
+     <widget class="QPushButton" name="minesweeperGameButton">
       <property name="styleSheet">
        <string notr="true">
-        QPushButton { background-color: #ff5722; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
-        QPushButton:hover { background-color: #e64a19; }
+        QPushButton { background-color: #2196F3; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+        QPushButton:hover { background-color: #0b7dda; }
        </string>
       </property>
       <property name="text">
-       <string>Flappy Bird</string>
+       <string>Démineur</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="tictactoeGameButton">
+      <property name="styleSheet">
+       <string notr="true">
+    QPushButton { background-color: #9C27B0; color: white; border-radius: 20px; padding: 10px; font-size: 16px; }
+    QPushButton:hover { background-color: #8E24AA; }
+   </string>
+      </property>
+      <property name="text">
+       <string>Morpion</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections>
-   <connection>
-    <sender>unscrambleGameButton</sender>
-    <signal>clicked()</signal>
-    <receiver>MenuWindow</receiver>
-    <slot>on_unscrambleGameButton_clicked()</slot>
-   </connection>
-   <connection>
-    <sender>flappyGameButton</sender>
-    <signal>clicked()</signal>
-    <receiver>MenuWindow</receiver>
-    <slot>on_flappyGameButton_clicked()</slot>
-   </connection>
+  <connection>
+   <sender>unscrambleGameButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MenuWindow</receiver>
+   <slot>on_unscrambleGameButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flappyGameButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MenuWindow</receiver>
+   <slot>on_flappyGameButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>
-

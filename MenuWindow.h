@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MenuWindow; }
 QT_END_NAMESPACE
@@ -22,6 +21,9 @@ private slots:
     void on_tictactoeGameButton_clicked();
     void on_memoryGameButton_clicked();
 
+    void on_minesweeperGameButton_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MenuWindow *ui;

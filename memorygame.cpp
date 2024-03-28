@@ -6,19 +6,16 @@
 
 MemoryGame::MemoryGame(QWidget *parent)
     : QWidget(parent), firstIndex(-1), secondIndex(-1), pairsFound(0) {
-    setMinimumSize(600, 600); // Ajuste la taille de la fenêtre
-    setStyleSheet("QWidget { background-color: #222; }"); // Style de fond pour tout le widget
+    setMinimumSize(600, 600);
+    setStyleSheet("QWidget { background-color: #222; }");
 
-    // Titre du jeu
     auto *titleLabel = new QLabel("Memory Game", this);
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("color: #FFF; font-size: 30px; margin-bottom: 20px;");
 
-    // Layout principal
     auto *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(titleLabel);
 
-    // Layout pour les boutons du jeu
     layout = new QGridLayout();
     mainLayout->addLayout(layout);
 
@@ -70,10 +67,9 @@ void MemoryGame::onCardClicked() {
     int clickedIndex = buttons.indexOf(clickedButton);
 
     if(clickedIndex == firstIndex || timer->isActive() || !clickedButton->isEnabled()) {
-        return; // Sortie anticipée si le bouton est déjà sélectionné ou si le timer est actif
+        return;
     }
 
-    // Animation pour simuler le retournement de la carte
     animateButton(clickedButton);
 
     clickedButton->setText(QString::number(cardValues[clickedIndex]));
@@ -82,12 +78,11 @@ void MemoryGame::onCardClicked() {
     } else {
         secondIndex = clickedIndex;
         if(cardValues[firstIndex] == cardValues[secondIndex]) {
-            // Si une paire est trouvée, vous pouvez ajouter une animation ici également
             pairsFound++;
             if(pairsFound == (buttons.size() / 2)) {
                 resetGame();
             }
-            firstIndex = secondIndex = -1; // Réinitialise pour la prochaine paire
+            firstIndex = secondIndex = -1;
         } else {
             timer->start();
         }
