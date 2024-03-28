@@ -13,12 +13,14 @@ SOURCES += \
     flappy.cpp \
     main.cpp \
     mainwindow.cpp \
+    memorygame.cpp \
     tictactoe.cpp
 
 HEADERS += \
     MenuWindow.h \
     flappy.h \
     mainwindow.h \
+    memorygame.h \
     tictactoe.h
 
 FORMS += \

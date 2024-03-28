@@ -3,10 +3,14 @@
 #include "mainwindow.h"
 #include "flappy.h"
 #include "tictactoe.h"
+#include "memorygame.h"
+#include <QDebug>
 
 MenuWindow::MenuWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MenuWindow)
+
+
 {
     ui->setupUi(this);
 }
@@ -46,6 +50,22 @@ void MenuWindow::on_flappyGameButton_clicked() {
 
 void MenuWindow::on_tictactoeGameButton_clicked()
 {
-    TicTacToe *tictactoeGame = new TicTacToe(nullptr); // Assurez-vous d'avoir un constructeur approprié
+    TicTacToe *tictactoeGame = new TicTacToe(nullptr);
     tictactoeGame->show();
+}
+
+void MenuWindow::on_memoryGameButton_clicked() {
+    qDebug() << "Jeu de mémoire cliqué";
+    static MemoryGame* memoryGame = nullptr;
+    if (!memoryGame) {
+        memoryGame = new MemoryGame(); // Suppression de 'this' pour éviter une éventuelle intégration incorrecte comme widget enfant.
+        memoryGame->setAttribute(Qt::WA_DeleteOnClose);
+        memoryGame->setWindowFlag(Qt::Window); // Assure que memoryGame est traité comme une fenêtre indépendante.
+        connect(memoryGame, &QWidget::destroyed, [=]() {
+            memoryGame = nullptr;
+        });
+    }
+    memoryGame->show();
+    memoryGame->raise();
+    memoryGame->activateWindow();
 }
