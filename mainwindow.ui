@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>506</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Unscramble Game</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    * {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+    }
+    QMainWindow {
+      background-color: #FFFFFF;
+    }
+    QLabel {
+      font-size: 24px;
+      color: #333333;
+      margin: 20px;
+    }
+    QPushButton {
+      background-color: #007bff; /* Bleu */
+      color: #FFFFFF;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+    QPushButton:hover {
+      background-color: #0056b3; /* Bleu plus foncé au survol */
+    }
+    QLineEdit {
+      border: 2px solid #007bff; /* Bordure bleue pour le champ de saisie */
+      border-radius: 10px;
+      padding: 5px;
+      margin: 20px;
+      font-size: 18px;
+    }
+    QStatusBar {
+      color: #333333;
+    }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="layoutVerticalMain">
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="scrambledWordLabel">
+      <property name="text">
+       <string>Word</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="userInput"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="submitButton">
+      <property name="text">
+       <string>Check Answer</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="nextButton">
+      <property name="text">
+       <string>Next Word</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="scoreLabel">
+      <property name="text">
+       <string>Score: 0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

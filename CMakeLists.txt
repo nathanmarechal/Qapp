@@ -8,7 +8,7 @@ include_directories(${Qt5Widgets_INCLUDE_DIRS})
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(exo2 main.cpp
-        main.cpp
+        mini.cpp
         mini.h)
 
 target_link_libraries(mini Qt5::Widgets)
