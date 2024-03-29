@@ -79,16 +79,16 @@ void MinesweeperGame::addGameButtons() {
     resetGameButton->move((boardX)*30, 0);
     connect(resetGameButton, &QPushButton::clicked, this, &MinesweeperGame::reset);
 
-    QPushButton *quitButton = new QPushButton(this);
-    quitButton->setText("quit game");
-    quitButton->setFixedSize(80, 30);
-    quitButton->move((boardX)*30, 30);
-    connect(quitButton, &QPushButton::clicked, this, &MinesweeperGame::quit);
+//    QPushButton *quitButton = new QPushButton(this);
+//    quitButton->setText("quit game");
+//    quitButton->setFixedSize(80, 30);
+//    quitButton->move((boardX)*30, 30);
+//    connect(quitButton, &QPushButton::clicked, this, &MinesweeperGame::quit);
 
     bombsRemainingLabel = new QLabel(this);
     bombsRemainingLabel->setText("0/0");
     bombsRemainingLabel->setFixedSize(50, 30);
-    bombsRemainingLabel->move((boardX)*30, 60);
+    bombsRemainingLabel->move((boardX)*30, 30);
 
     QLabel *bombIconLabel = new QLabel(this);
     QPixmap bombIcon(pathToBombIcon);
@@ -96,7 +96,7 @@ void MinesweeperGame::addGameButtons() {
         qDebug() << "Le chargement de l'image a échoué pour" << pathToBombIcon;
     } else {
         bombIconLabel->setPixmap(bombIcon.scaled(30, 30));
-        bombIconLabel->move((boardX)*30+50, 60);
+        bombIconLabel->move((boardX)*30+50, 30);
     }
 }
 
@@ -108,10 +108,6 @@ void MinesweeperGame::initializeBoard() {
             board[i][j]= ' ';
         }
     }
-}
-void MinesweeperGame::quit(){
-    hide();
-    parentWidget()->parentWidget()->show();
 }
 
 void MinesweeperGame::resetButtons() {
@@ -173,15 +169,33 @@ void MinesweeperGame::leftButtonClick()
         {
             placeBombs(x,y);
             updateBombsRemainingLabel();
+            gameIsOngoing = true;
         }
-        revealTile(x,y,button);
+        if(gameIsOngoing)
+        {
+            revealTile(x,y,button);
+
+
+
+            if(!gameIsOngoing)
+            {
+                qDebug()<<"revele toutes les tiles";
+                for (int i = 0; i < boardY; ++i) {
+                    for(int j = 0; j < boardX; ++j) {
+                        revealTile(i,j,buttons[i][j]);
+                    }
+                }
+            }
+
+            checkVictory();
+        }
     }
-    checkVictory();
+
 }
 
 void MinesweeperGame::rightButtonClick(int x,int y,QPushButton * button)
 {
-    if(firstClick)
+    if(firstClick || !gameIsOngoing)
     {
         return;
     }
@@ -192,22 +206,23 @@ void MinesweeperGame::rightButtonClick(int x,int y,QPushButton * button)
 
 void MinesweeperGame::checkVictory()
 {
-    bool gameIsOngoing = false;
-
+    bool gameIsOngoingLocal = false;
     char symbol;
     for (int i = 0; i < boardX; ++i) {
         for(int j = 0; j < boardY; ++j) {
             symbol = board[i][j];
             if(symbol==' ')
             {
-                gameIsOngoing = true;
+                gameIsOngoingLocal = true;
                 break;
             }
         }
     }
 
-    if(!gameIsOngoing)
+    if(!gameIsOngoingLocal)
     {
+        gameIsOngoing = false;
+
         gameOver->show();
     }
 }
@@ -298,7 +313,12 @@ void MinesweeperGame::revealTile(int x,int y,QPushButton *button)
     }
     if (board[x][y]=='b') {
         button->setIcon(QIcon(pathToBombIcon));
-        gameOver->show();
+        if(gameIsOngoing)
+        {
+            gameOver->show();
+            gameIsOngoing = false;
+        }
+
     } else {
         int tileValue = countAdjacents(x,y);
         board[x][y] = static_cast<char>(tileValue + '0');

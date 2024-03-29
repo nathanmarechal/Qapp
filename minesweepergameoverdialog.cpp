@@ -17,10 +17,10 @@ MinesweeperGameOverDialog::~MinesweeperGameOverDialog()
 void MinesweeperGameOverDialog::on_buttonBox_rejected()
 {
     hide();
-    MinesweeperGame *gameWidget = qobject_cast<MinesweeperGame*>(parentWidget());
-    if (gameWidget) {
-        gameWidget->quit();
-    }
+//    MinesweeperGame *gameWidget = qobject_cast<MinesweeperGame*>(parentWidget());
+//    if (gameWidget) {
+//        gameWidget->quit();
+//    }
 }
 
 

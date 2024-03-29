@@ -23,8 +23,6 @@ private slots:
 
     void on_minesweeperGameButton_clicked();
 
-    void on_pushButton_clicked();
-
 private:
     Ui::MenuWindow *ui;
 };

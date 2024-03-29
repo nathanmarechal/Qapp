@@ -57,16 +57,10 @@ void MenuWindow::on_tictactoeGameButton_clicked()
 
 void MenuWindow::on_minesweeperGameButton_clicked()
 {
-    qDebug() << "in minesweeper button clicked";
+    //qDebug() << "in minesweeper button clicked";
     MinesweeperStart *minesweeper = new MinesweeperStart(this);
-    this->hide();
+    //this->hide();
     minesweeper->show();
-}
-
-
-void MenuWindow::on_pushButton_clicked()
-{
-    qDebug() << "in random ass button clicked";
 }
 
 void MenuWindow::on_memoryGameButton_clicked() {

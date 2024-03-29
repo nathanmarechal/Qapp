@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include "minesweepergameoverdialog.h"
 #include <QLabel>
+#include <QIcon>
 
 class MinesweeperGame : public QDialog {
     Q_OBJECT
@@ -13,7 +14,6 @@ public:
     MinesweeperGame(QWidget *parent = nullptr, int boardX = 0, int boardY = 0, double bombsProbability = 0.0);
     ~MinesweeperGame();
     void reset();
-    void quit();
 
 private slots:
     void leftButtonClick();
@@ -26,9 +26,11 @@ private:
     char** board;
     QPushButton*** buttons;
     bool firstClick = true;
+    bool gameIsOngoing = false;
     QString pathToFlagIcon;
     QString pathToBombIcon;
     QString pathToEmptyIcon;
+
     QLabel* bombsRemainingLabel;
     MinesweeperGameOverDialog* gameOver;
 
